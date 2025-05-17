@@ -6,7 +6,7 @@
 #    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 21:01:27 by root              #+#    #+#              #
-#    Updated: 2025/05/14 20:19:53 by root             ###   ########.fr        #
+#    Updated: 2025/05/17 11:25:52 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ loading:
 	@echo -n "Building"; for i in {1..3}; do sleep 0.3; echo -n "."; done; echo " 🚀"
 
 fun_msg:
-	@echo "$(GREEN)$(shell shuf -n 1 -e 'Build complete! 🚀' 'Time to sort those stacks! 🎮' 'Push_swap is ready! ✅')$(RESET)"
+	@echo "$(GREEN)$(shell shuf -n 1 -e 'The table is set! 🚀' 'Time to philosophize! 🎮' 'Philosophers is ready! ✅')$(RESET)"
 
 $(NAME): $(OBJS)
 	@echo "$(GREEN)🔗 Linking $(NAME)...$(RESET)"

@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/05/14 19:39:32 by root             ###   ########.fr       */
+/*   Updated: 2025/05/17 17:13:02 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,24 @@
 # include <unistd.h>   // To use write, usleep
 # include "../libft/libft.h"
 
-typedef struct s_node
-{
+#define IS_EATING "is eating"
+#define IS_SLEEPING "is sleeping"
+#define IS_THINKING "is thinking"
+#define IS_FORK "has taken a fork"
+#define IS_DEAD "died"
 
-}	t_node;
+typedef struct s_config
+{
+	int	number_of_philosophers;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	number_of_times_each_philosopher_must_eat;
+}	t_config;
 
 ////////////////// PARSING //////////////////////
 
+int arg_checker(int argc, char **argv);
 
 
 /////////////// MISCELLANEOUS //////////////
