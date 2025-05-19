@@ -6,14 +6,14 @@
 #    By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 21:01:27 by root              #+#    #+#              #
-#    Updated: 2025/05/19 11:06:58 by aingunza         ###   ########.fr        #
+#    Updated: 2025/05/19 11:30:24 by aingunza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = philo
 
 LIBFT = ../libft
-CFLAGS = -Wextra -Wall -Werror -MMD -MP
+CFLAGS = -Wextra -Wall -Werror
 HEADERS := -I ./include -I $(LIBFT)/include
 LIBS = -L$(LIBFT) -lft
 SRCS := $(shell find . -maxdepth 1 -iname "*.c")

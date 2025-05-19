@@ -3,22 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/05/17 17:13:02 by root             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/29 14:11:08 by root              #+#    #+#             */
-/*   Updated: 2025/05/12 13:23:34 by aingunza         ###   ########.fr       */
+/*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
+/*   Updated: 2025/05/19 12:49:32 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +36,17 @@ typedef struct s_config
 	int	number_of_times_each_philosopher_must_eat;
 }	t_config;
 
+typedef struct s_misc
+{
+	
+} t_misc;
 ////////////////// PARSING //////////////////////
 
-int arg_checker(int argc, char **argv);
+int 	arg_checker(int argc, char **argv);
 
 
 /////////////// MISCELLANEOUS //////////////
+void 	initialize_threads(char **argv);
 
 
 #endif

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   is_str_digit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:14:56 by root              #+#    #+#             */
-/*   Updated: 2025/05/17 17:14:57 by root             ###   ########.fr       */
+/*   Updated: 2025/05/19 12:00:47 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int is_all_digit(char *str)
+#include "libft.h"
+
+int	is_str_digit(char *str)
 {
 	if (!str || *str == '\0')
 		return (0);
