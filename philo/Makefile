@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
+#    By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 21:01:27 by root              #+#    #+#              #
-#    Updated: 2025/05/17 11:25:52 by root             ###   ########.fr        #
+#    Updated: 2025/05/19 11:06:58 by aingunza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = philo
 
 LIBFT = ../libft
-CFLAGS = -Wextra -Wall -Werror 
+CFLAGS = -Wextra -Wall -Werror -MMD -MP
 HEADERS := -I ./include -I $(LIBFT)/include
 LIBS = -L$(LIBFT) -lft
 SRCS := $(shell find . -maxdepth 1 -iname "*.c")
