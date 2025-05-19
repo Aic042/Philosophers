@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:14:56 by root              #+#    #+#             */
-/*   Updated: 2025/05/19 12:00:47 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:03:47 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int	is_str_digit(char *str)
 {
 	if (!str || *str == '\0')
 		return (0);
+	while (*str == '+' || *str == '-')
+	{
+		str++;
+	}
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
