@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:49:03 by aingunza          #+#    #+#             */
-/*   Updated: 2025/05/19 13:06:45 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:30:16 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_pos_int(int num)
 	if (num < 0)
 		return (ft_printf("num is negative\n"), 0);
 	else
-		return (ft_printf("all good!\n"), 1);
+		return (1);
 }
 
 int	arg_checker(int argc, char **argv)
@@ -31,8 +31,10 @@ int	arg_checker(int argc, char **argv)
 		|| is_str_digit(argv[3]) == 0 || is_str_digit(argv[4]) == 0)
 		return (ft_printf("No digit\n"), 0);
 	if (!check_pos_int(ft_atoi(argv[1])) || !check_pos_int(ft_atoi(argv[2]))
-		|| !check_pos_int(ft_atoi(argv[3])) || !check_pos_int(ft_atoi(argv[4]))
-		|| !check_pos_int(ft_atoi(argv[5])))
+		|| !check_pos_int(ft_atoi(argv[3])) || !check_pos_int(ft_atoi(argv[4])))
 		return (0);
+	if (argc == 6)
+		if(!check_pos_int(ft_atoi(argv[5])))
+			return (0);
 	return (ft_printf("Args are all good\n"), 1);
 }
