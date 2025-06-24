@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/06/19 10:48:25 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:19:53 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,16 @@ typedef struct s_config
 	int	number_of_times_each_philosopher_must_eat;
 }	t_config;
 
+typedef struct s_philo
+{
+	int id;
+} t_philo;
 
+typedef struct s_fork
+{
+	int id;
+	int is_taken;
+} t_fork;
 // typedef struct s_misc
 // {
 // } t_misc;
@@ -45,6 +54,8 @@ int		arg_checker(int argc, char **argv);
 
 /////////////// MISCELLANEOUS //////////////
 void	initialize_threads(char **argv);
-
+void	eepy_philo(t_philo *p);
+void	philo_feeder(t_philo *p);
+void	philo_philosophize(t_philo *p);
 
 #endif
