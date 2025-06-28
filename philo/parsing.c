@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:49:03 by aingunza          #+#    #+#             */
-/*   Updated: 2025/06/19 10:30:16 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/06/28 12:14:51 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	arg_checker(int argc, char **argv)
 	if (!check_pos_int(ft_atoi(argv[1])) || !check_pos_int(ft_atoi(argv[2]))
 		|| !check_pos_int(ft_atoi(argv[3])) || !check_pos_int(ft_atoi(argv[4])))
 		return (0);
+		
 	if (argc == 6)
 		if(!check_pos_int(ft_atoi(argv[5])))
 			return (0);
