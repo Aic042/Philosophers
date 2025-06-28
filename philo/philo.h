@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/06/24 15:19:53 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/06/28 13:35:45 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int		arg_checker(int argc, char **argv);
 
 /////////////// MISCELLANEOUS //////////////
 void	initialize_threads(char **argv);
-void	eepy_philo(t_philo *p);
-void	philo_feeder(t_philo *p);
-void	philo_philosophize(t_philo *p);
+void	eepy_philo(t_philo *p, t_config *s);
+void	philo_feeder(t_philo *p, t_config *s);
+void	philo_philosophize(t_philo *p, t_config *s);
 
 #endif

@@ -12,8 +12,8 @@ void philo_feeder(t_philo *p, t_config *c)
 	usleep(c->time_to_eat);
 }
 
-void philo_philosophize(t_philo *p, t_config *c)
-{
-	printf("Philo %d is thinkinh", p->id);
-	usleep(c->think);
-}
+// void philo_philosophize(t_philo *p, t_config *c)
+// {
+// 	printf("Philo %d is thinkinh", p->id);
+// 	usleep(c->think);
+// }
