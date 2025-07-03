@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 10:37:18 by aingunza          #+#    #+#             */
-/*   Updated: 2025/06/28 13:31:15 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/01 08:40:19 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*thread_function(void *arg)
 	ft_printf("Thread %d started\n", *(int *)arg);
 	return (NULL);
 }
+
+
 
 // void	initialize_threads(char **argv)
 // {

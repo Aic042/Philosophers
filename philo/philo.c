@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:37:06 by root              #+#    #+#             */
-/*   Updated: 2025/06/24 14:52:29 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/01 13:35:12 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,33 +20,75 @@ int	fork_getter(char **argv)
 	return (forks);
 }
 // forks = forks + 1;
+// void variable_initializer()
+// {
+// 	struct timeval time;
+// 	int current;
+// 	gettimeofday(&time, NULL);
+// 	current = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+// 	return (current);
+// }
 
-int cur_time_getter(void)
+long get_time_ms(void)
 {
-	struct timeval time;
-	int current;
-	gettimeofday(&time, NULL);
-	current = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-	return (current);
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000));
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	int	forks;
-
 	if (!arg_checker(argc, argv))
-		exit(1);
-	int start = cur_time_getter();
-	// initialize_threads(argv);
-	forks = fork_getter(argv);
-	printf("forks = %d\n", forks);
-	while (1)
+		return (1);
+
+	int i;
+	int n = ft_atoi(argv[1]);
+	t_philo *philos = malloc(sizeof(t_philo) * n);
+	pthread_t *threads = malloc(sizeof(pthread_t) * n);
+	t_config *config = malloc(sizeof(t_config));
+	config->start_time = get_time_ms();
+	config->number_of_philosophers = n;
+	config->time_to_eat = ft_atoi(argv[3]);
+	config->time_to_sleep = ft_atoi(argv[4]);
+
+	for (i = 0; i < n; i++)
 	{
-		printf("time is: %d\n", cur_time_getter() - start);
-		usleep(12222); // 100ms
-		printf("now time is: %d\n", cur_time_getter() - start);
+		philos[i].id = i + 1;
+		philos[i].config = config;
+		pthread_create(&threads[i], NULL, routine, &philos[i]);
 	}
-	return (write(1, "Done\n", 5), 0);
+
+	for (i = 0; i < n; i++)
+		pthread_join(threads[i], NULL);
+
+	free(philos);
+	free(threads);
+	free(config);
+
+	return 0;
 }
 
+
+// int	main(int argc, char **argv)
+// {
+// 	int	forks;
+
+// 	if (!arg_checker(argc, argv))
+// 		exit(1);
+// 	forks = fork_getter(argv);
+// 	printf("forks = %d\n", forks);
+// 	pthread_t thread1;
+// 	pthread_create(&thread1, NULL, routine, NULL);	
+// 	return (write(1, "Done\n", 5), 0);
+// }
+	
+// int start = cur_time_getter();
+// while (1)
+// {
+// 	printf("time is: %d\n", cur_time_getter() - start);
+// 	usleep(12222); // 100ms
+// 	printf("now time is: %d\n", cur_time_getter() - start);
+// }
 //for later, should check if it's better to have an int
+
