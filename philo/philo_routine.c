@@ -29,7 +29,7 @@ void philo_think(t_philo *p)
 	usleep(p->config->time_to_eat * 1000);
 }
 
-void
+
 
 void *routine(void *arg)
 {
