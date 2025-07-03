@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/01 13:35:35 by root             ###   ########.fr       */
+/*   Updated: 2025/07/03 12:18:25 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,22 @@ typedef struct s_fork
 
 typedef struct s_config
 {
-	int				number_of_philosophers;
+	int				philo_num;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				number_of_times_each_philosopher_must_eat;
-	int				last_meal;
+	int				last_meal_time;
 	t_fork			*r_fork;
 	t_fork			*l_fork;
 	pthread_t		main_thread;
 	long			start_time;
+	pthread_mutex_t	print;
 }	t_config;
 
 typedef struct s_philo
 {
 	pthread_mutex_t	death;
-	pthread_mutex_t	print;
 	int 			id;
 	int				to_eat;
 	int				to_sleep;
@@ -76,5 +76,7 @@ void	philo_feeder(t_philo *p);
 void	philo_think(t_philo *p);
 void	 *routine(void *arg);
 long	get_time_ms(void);
+void	initialize_variables(t_philo *p, char **argv);
+
 
 #endif

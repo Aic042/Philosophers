@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:37:06 by root              #+#    #+#             */
-/*   Updated: 2025/07/01 13:35:12 by root             ###   ########.fr       */
+/*   Updated: 2025/07/03 12:29:28 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,27 +41,23 @@ int main(int argc, char **argv)
 {
 	if (!arg_checker(argc, argv))
 		return (1);
-
 	int i;
-	int n = ft_atoi(argv[1]);
+	int n = 0;
+	n = ft_atoi(argv[1]);
 	t_philo *philos = malloc(sizeof(t_philo) * n);
 	pthread_t *threads = malloc(sizeof(pthread_t) * n);
 	t_config *config = malloc(sizeof(t_config));
 	config->start_time = get_time_ms();
-	config->number_of_philosophers = n;
 	config->time_to_eat = ft_atoi(argv[3]);
 	config->time_to_sleep = ft_atoi(argv[4]);
-
 	for (i = 0; i < n; i++)
 	{
 		philos[i].id = i + 1;
 		philos[i].config = config;
 		pthread_create(&threads[i], NULL, routine, &philos[i]);
 	}
-
 	for (i = 0; i < n; i++)
 		pthread_join(threads[i], NULL);
-
 	free(philos);
 	free(threads);
 	free(config);

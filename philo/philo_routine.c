@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_routine.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
+/*   Updated: 2025/07/03 12:52:37 by aingunza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void eepy_philo(t_philo *p)
@@ -11,15 +23,21 @@ void philo_feeder(t_philo *p)
 {
 	long timestamp = get_time_ms() - p->config->start_time;
 	printf("%ld | Philo %d is eating\n", timestamp, p->id);
+	p->config->last_meal_time = get_time_ms();
 	usleep(p->config->time_to_eat * 1000);
+	(p->times_ate)++;
+	printf("times eaten: %d\n", p->times_ate);
 }
 
 void philo_die(t_philo *p)
 {
 	
 	long timestamp = get_time_ms() - p->config->start_time;
-	if (p->to_die >= p->config->time_to_die)
+	if (p->config->last_meal_time >= p->config->time_to_die)
+	{
 		printf("%ld | philo %d died", timestamp, p->id);
+		exit (2);
+	}
 }
 
 void philo_think(t_philo *p)
@@ -34,8 +52,8 @@ void philo_think(t_philo *p)
 void *routine(void *arg)
 {
 	t_philo *p = (t_philo *)arg;
-
-	while (1)
+	p->times_ate = 0;
+	while (p->times_ate < 100)
 	{
 		eepy_philo(p);
 		philo_feeder(p);
