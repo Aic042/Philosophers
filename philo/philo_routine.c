@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/03 14:36:40 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/04 13:28:36 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void philo_feeder(t_philo *p)
 	p->config->last_meal_time = get_time_ms();
 	usleep(p->config->time_to_eat * 1000);
 	(p->times_ate)++;
-	printf("times eaten: %d\n", p->times_ate);
 }
 
 void philo_die(t_philo *p)
@@ -51,10 +50,18 @@ void *routine(void *arg)
 {
 	t_philo *p = (t_philo *)arg;
 	p->times_ate = 0;
+	if (is_pair(p->config->philo_num))
+	{
+		printf("is pair\n");
+		//los pares toman los tenedores de izuierda y derecha, los impares 
+	}
+	else
+		printf("isn't pair\n");
+		//los impares toman los tenedores de la  derecha y la izquierda;
 	while (p->times_ate < 10)
 	{
-		eepy_philo(p);
 		philo_feeder(p);
+		eepy_philo(p);
 		philo_think(p);
 	}
 	return NULL;

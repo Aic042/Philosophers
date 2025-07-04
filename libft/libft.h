@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 15:49:14 by aingunza          #+#    #+#             */
-/*   Updated: 2025/05/19 12:29:20 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/04 12:48:35 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include <stdarg.h>
 
-#define MALLOC_EXIT 1
-#define MALLOC_NO_EXIT 0
+# define MALLOC_EXIT 1
+# define MALLOC_NO_EXIT 0
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -31,6 +31,7 @@ int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+int		is_pair(int num);
 int		ft_atoi(const char *str);
 int		is_str_digit(char *str);
 long	ft_atol(const char *str);

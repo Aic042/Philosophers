@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:37:06 by root              #+#    #+#             */
-/*   Updated: 2025/07/04 10:57:05 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/04 13:28:59 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ int main(int argc, char **argv)
 	}
 	for (i = 0; i < n; i++)
 		pthread_join(threads[i], NULL);
+	printf("times eaten: %d\n", philos->times_ate);
 	free(philos);
 	free(threads);
 	free(config);
 
 	return 0;
 }
+
 
 
 // int	main(int argc, char **argv)
@@ -80,4 +82,3 @@ int main(int argc, char **argv)
 // 	printf("now time is: %d\n", cur_time_getter() - start);
 // }
 //for later, should check if it's better to have an int
-
