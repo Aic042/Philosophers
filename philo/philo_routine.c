@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/03 12:52:37 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/04 07:56:31 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void philo_feeder(t_philo *p)
 
 void philo_die(t_philo *p)
 {
-	
-	long timestamp = get_time_ms() - p->config->start_time;
-	if (p->config->last_meal_time >= p->config->time_to_die)
-	{
-		printf("%ld | philo %d died", timestamp, p->id);
-		exit (2);
-	}
+    long now = get_time_ms();
+    if ((now - p->config->last_meal_time) > p->config->time_to_die)
+    {
+        long timestamp = now - p->config->start_time;
+        printf("%ld | Philo %d died\n", timestamp, p->id);
+        exit(1); // or set a global flag
+    }
 }
 
 void philo_think(t_philo *p)
@@ -47,17 +47,22 @@ void philo_think(t_philo *p)
 	usleep(p->config->time_to_eat * 1000);
 }
 
-
-
 void *routine(void *arg)
 {
 	t_philo *p = (t_philo *)arg;
 	p->times_ate = 0;
-	while (p->times_ate < 100)
+	int i;
+	i = 0;
+	while (1)
 	{
-		eepy_philo(p);
+		if (p->config->number_of_times_each_philosopher_must_eat && p->config->number_of_times_each_philosopher_must_eat > 0)
+			if (i < p->config->number_of_times_each_philosopher_must_eat)
+				break;
 		philo_feeder(p);
+		eepy_philo(p);
 		philo_think(p);
+		philo_die(p);
+		i++;
 	}
 	return NULL;
 }
