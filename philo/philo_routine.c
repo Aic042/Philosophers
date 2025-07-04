@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/03 12:52:37 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/03 14:36:40 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,11 @@ void philo_think(t_philo *p)
 	usleep(p->config->time_to_eat * 1000);
 }
 
-
-
 void *routine(void *arg)
 {
 	t_philo *p = (t_philo *)arg;
 	p->times_ate = 0;
-	while (p->times_ate < 100)
+	while (p->times_ate < 10)
 	{
 		eepy_philo(p);
 		philo_feeder(p);

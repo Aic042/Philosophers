@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:37:06 by root              #+#    #+#             */
-/*   Updated: 2025/07/03 12:29:28 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/04 10:57:05 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,6 @@ int	fork_getter(char **argv)
 // 	return (current);
 // }
 
-long get_time_ms(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000));
-}
-
 int main(int argc, char **argv)
 {
 	if (!arg_checker(argc, argv))
@@ -47,6 +39,7 @@ int main(int argc, char **argv)
 	t_philo *philos = malloc(sizeof(t_philo) * n);
 	pthread_t *threads = malloc(sizeof(pthread_t) * n);
 	t_config *config = malloc(sizeof(t_config));
+	
 	config->start_time = get_time_ms();
 	config->time_to_eat = ft_atoi(argv[3]);
 	config->time_to_sleep = ft_atoi(argv[4]);
