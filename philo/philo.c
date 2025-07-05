@@ -6,7 +6,11 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:37:06 by root              #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/07/04 08:22:22 by root             ###   ########.fr       */
+=======
+/*   Updated: 2025/07/04 13:28:59 by aingunza         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +33,6 @@ int	fork_getter(char **argv)
 // 	return (current);
 // }
 
-long get_time_ms(void)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000));
-}
-
 int main(int argc, char **argv)
 {
 	if (!arg_checker(argc, argv))
@@ -48,6 +44,7 @@ int main(int argc, char **argv)
 	t_philo *philos = malloc(sizeof(t_philo) * n);
 	pthread_t *threads = malloc(sizeof(pthread_t) * n);
 	t_config *config = malloc(sizeof(t_config));
+	
 	config->start_time = get_time_ms();
 	config->time_to_eat = ft_atoi(argv[3]);
 	config->time_to_sleep = ft_atoi(argv[4]);
@@ -60,11 +57,13 @@ int main(int argc, char **argv)
 	}
 	for (i = 0; i < n; i++)
 		pthread_join(threads[i], NULL);
+	printf("times eaten: %d\n", philos->times_ate);
 	free(philos);
 	free(threads);
 	free(config);
 	return 0;
 }
+
 
 
 // int	main(int argc, char **argv)
@@ -88,4 +87,3 @@ int main(int argc, char **argv)
 // 	printf("now time is: %d\n", cur_time_getter() - start);
 // }
 //for later, should check if it's better to have an int
-

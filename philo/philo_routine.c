@@ -6,7 +6,11 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/07/04 07:56:31 by root             ###   ########.fr       */
+=======
+/*   Updated: 2025/07/04 13:28:36 by aingunza         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +30,6 @@ void philo_feeder(t_philo *p)
 	p->config->last_meal_time = get_time_ms();
 	usleep(p->config->time_to_eat * 1000);
 	(p->times_ate)++;
-	printf("times eaten: %d\n", p->times_ate);
 }
 
 void philo_die(t_philo *p)
@@ -51,6 +54,7 @@ void *routine(void *arg)
 {
 	t_philo *p = (t_philo *)arg;
 	p->times_ate = 0;
+<<<<<<< HEAD
 	int i;
 	i = 0;
 	while (1)
@@ -58,6 +62,18 @@ void *routine(void *arg)
 		if (p->config->number_of_times_each_philosopher_must_eat && p->config->number_of_times_each_philosopher_must_eat > 0)
 			if (i < p->config->number_of_times_each_philosopher_must_eat)
 				break;
+=======
+	if (is_pair(p->config->philo_num))
+	{
+		printf("is pair\n");
+		//los pares toman los tenedores de izuierda y derecha, los impares 
+	}
+	else
+		printf("isn't pair\n");
+		//los impares toman los tenedores de la  derecha y la izquierda;
+	while (p->times_ate < 10)
+	{
+>>>>>>> refs/remotes/origin/main
 		philo_feeder(p);
 		eepy_philo(p);
 		philo_think(p);

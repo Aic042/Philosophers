@@ -6,7 +6,7 @@
 #    By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 21:01:27 by root              #+#    #+#              #
-#    Updated: 2025/05/19 11:30:24 by aingunza         ###   ########.fr        #
+#    Updated: 2025/07/04 12:59:34 by aingunza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ fun_msg:
 $(NAME): $(OBJS)
 	@echo "$(GREEN)🔗 Linking $(NAME)...$(RESET)"
 	cc $(OBJS) -o $(NAME) $(LIBS)
-
 
 clean:
 	@echo "$(YELLOW)🧹 Cleaning object files...$(RESET)"
