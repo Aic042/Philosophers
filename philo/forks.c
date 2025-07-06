@@ -9,3 +9,8 @@ void print_status(t_philo *p, char *msg)
 	printf("%ld | Philo %d %s\n", timestamp, p->id, msg);
 	pthread_mutex_unlock(&p->config->print);
 }
+
+int is_dead(t_philo *p)
+{
+	
+}
