@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/07 11:38:46 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:08:55 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,16 @@ void *routine(void *arg)
 			break;
 		if (p->unalived == 1)
 			break;
-		philo_die(p);               // revisar justo al comenzar
+		// philo_die(p);               // revisar justo al comenzar
 
 		philo_feeder(p);
 		philo_die(p);               // por si te mueres durante el sleep
 
 		eepy_philo(p);
-		philo_die(p);               // por si te mueres mientras duermes
+		// philo_die(p);               // por si te mueres mientras duermes
 
 		philo_think(p);
-		philo_die(p);               // por si te mueres pensando
+		// philo_die(p);               // por si te mueres pensando
 		i++;
 	}
 	return NULL;
