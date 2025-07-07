@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/07 14:19:59 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:58:04 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void philo_feeder(t_philo *p)
 	(p->times_ate)++;
 	p->is_eating = 1;
 	p->is_thinking = 0;
-	p->last_meal_time = timestamp
+	p->last_meal_time = get_time_ms();
 }
 
 void philo_die(t_philo *p)
