@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/06 22:50:26 by root             ###   ########.fr       */
+/*   Updated: 2025/07/07 10:14:43 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ typedef struct s_philo
 {
 	pthread_mutex_t	death;
 	int 			id;
-	int				to_eat;
-	int				to_sleep;
-	int				to_die;
+	int				is_Sleeping;
+	int				is_eating;
+	int				is_thinking;
 	long			last_meal_time;
 	int				times_ate;
 	int				unalived;
@@ -78,6 +78,7 @@ void	 *routine(void *arg);
 long	get_time_ms(void);
 void	initialize_variables(t_philo *p, char **argv);
 void	print_status(t_philo *p, char *msg);
+void	initialize_var(char **argv, t_config *c);
 
 
 #endif

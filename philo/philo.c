@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:59:01 by root              #+#    #+#             */
-/*   Updated: 2025/07/07 06:43:04 by root             ###   ########.fr       */
+/*   Updated: 2025/07/07 09:35:57 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,20 @@ int main(int argc, char **argv)
 	n = ft_atoi(argv[1]);
 	t_philo *philos = malloc(sizeof(t_philo) * n);
 	pthread_t *threads = malloc(sizeof(pthread_t) * n);
+	memset(philos, 0, sizeof(t_philo) * n);
 	t_config *config = malloc(sizeof(t_config));
-	pthread_mutex_init(&config->print, NULL); 	
-	config->start_time = get_time_ms();
-	config->time_to_die = ft_atoi(argv[2]);
-	config->time_to_eat = ft_atoi(argv[3]);
-	config->time_to_sleep = ft_atoi(argv[4]);
-	
-	while (i < n)
+	if (!philos || !threads || !config)
+		ft_printf("Error, structs malloc", 1);
+	initialize_var(argv, config);
+	for (i = 0; i < n; i++)
 	{
 		philos[i].id = i + 1;
 		philos[i].config = config;
-		philos[i].last_meal_time = config->start_time; // <-- AQUÍ
-		pthread_create(&threads[i], NULL, routine, &philos[i]);
-		i++;
+		philos[i].times_ate = 0;
+		philos[i].last_meal_time = config->start_time;
+    	pthread_create(&threads[i], NULL, routine, &philos[i]);
 	}
+
 	for (i = 0; i < n; i++)
 		pthread_join(threads[i], NULL);
 	printf("times eaten: %d\n", philos->times_ate);

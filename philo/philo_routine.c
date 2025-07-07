@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/06 22:54:16 by root             ###   ########.fr       */
+/*   Updated: 2025/07/07 10:17:52 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void eepy_philo(t_philo *p)
 {
 	print_status(p, "is eepying");
 	usleep(p->config->time_to_sleep * 1000);
+	p->is_Sleeping = 1;
+	p->is_eating = 0;
 }
 
 void philo_feeder(t_philo *p)
@@ -24,6 +26,8 @@ void philo_feeder(t_philo *p)
 	p->last_meal_time = get_time_ms();
 	usleep(p->config->time_to_eat * 1000);
 	(p->times_ate)++;
+	p->is_eating = 1;
+	p->is_thinking = 0;
 }
 
 void philo_die(t_philo *p)
@@ -41,6 +45,8 @@ void philo_think(t_philo *p)
 {
 	print_status(p, "is thinking");
 	usleep(p->config->time_to_eat * 1000);
+	p->is_thinking = 1;
+	p->is_Sleeping = 0;
 }
 
 void *routine(void *arg)
