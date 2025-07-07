@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:59:01 by root              #+#    #+#             */
-/*   Updated: 2025/07/07 14:00:56 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:55:46 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int main(int argc, char **argv)
 	pthread_t *threads = malloc(sizeof(pthread_t) * n);
 	memset(philos, 0, sizeof(t_philo) * n);
 	t_config *config = malloc(sizeof(t_config));
+	config->forks = malloc(sizeof(t_fork) * config->philo_num);
+	for (int i = 0; i < config->philo_num; i++)
+    	pthread_mutex_init(&config->forks[i].fork, NULL);
+
 	if (!philos || !threads || !config)
 		printf("Error, structs malloc");
 	initialize_var(argv, config);

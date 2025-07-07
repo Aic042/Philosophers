@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/07 14:58:04 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/07 22:42:04 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,30 @@ void philo_die(t_philo *p)
 	}
 }
 
+void	fork_taker(t_philo *p)
+{
+	if (p->id % 2 == 0)
+	{
+		pthread_mutex_lock(&p->config->forks[p->right_fork_id].fork);
+		print_status(p, "has taken a R_fork");
+		pthread_mutex_lock(&p->config->forks[p->left_fork_id].fork);
+		print_status(p, "has taken a L_fork");
+	}
+    else
+    {
+        pthread_mutex_lock(&p->config->forks[p->left_fork_id].fork);
+        print_status(p, "has taken a fork");
+        pthread_mutex_lock(&p->config->forks[p->right_fork_id].fork);
+        print_status(p, "has taken a fork");
+    }
+}
+
+void	drop_forks(t_philo * p)
+{
+	pthread_mutex_unlock(&p->config->forks[p->left_fork_id].fork);
+	pthread_mutex_unlock(&p->config->forks[p->right_fork_id].fork);
+}
+
 void philo_think(t_philo *p)
 {
 	print_status(p, "is thinking");
@@ -53,31 +77,29 @@ void philo_think(t_philo *p)
 
 void *routine(void *arg)
 {
-	t_philo *p = (t_philo *)arg;
-	p->times_ate = 0;
-	int i;
-	i = 0;
-	while (1)
-	{
-		if (p->config->number_of_times_each_philosopher_must_eat > 0 &&
-			p->times_ate >= p->config->number_of_times_each_philosopher_must_eat)
-			break;
-		if (p->unalived == 1)
-			break;
-		// philo_die(p);               // revisar justo al comenzar
+    t_philo *p = (t_philo *)arg;
 
-		philo_feeder(p);
-		// philo_die(p);               // por si te mueres durante el sleep
+    while (1)
+    {
+        philo_die(p);
 
-		eepy_philo(p);
-		// philo_die(p);               // por si te mueres mientras duermes
+        fork_taker(p);
+        philo_feeder(p);
+        drop_forks(p);
 
-		philo_think(p);
-		// philo_die(p);               // por si te mueres pensando
-		i++;
-	}
-	return NULL;
+        philo_die(p);
+        eepy_philo(p);
+
+        philo_die(p);
+        philo_think(p);
+
+        if (p->config->number_of_times_each_philosopher_must_eat > 0 &&
+            p->times_ate >= p->config->number_of_times_each_philosopher_must_eat)
+            break;
+    }
+    return NULL;
 }
+
 
 // void philo_philosophize(t_philo *p, timestamp, t_config *c)
 // {
