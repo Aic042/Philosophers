@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/07 14:08:55 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:19:59 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void eepy_philo(t_philo *p)
 {
-	print_status(p, "is eepying");
+	print_status(p, "is sleeping");
 	usleep(p->config->time_to_sleep * 1000);
 	p->is_Sleeping = 1;
 	p->is_eating = 0;
@@ -28,6 +28,7 @@ void philo_feeder(t_philo *p)
 	(p->times_ate)++;
 	p->is_eating = 1;
 	p->is_thinking = 0;
+	p->last_meal_time = timestamp
 }
 
 void philo_die(t_philo *p)
@@ -36,7 +37,7 @@ void philo_die(t_philo *p)
 	if ((now - p->last_meal_time) > p->config->time_to_die)
 	{
 		long timestamp = now - p->config->start_time;
-		printf("%ld | Philo %d died\n", timestamp, p->id);
+		printf("%ld Philo %d died\n", timestamp, p->id);
 		p->unalived = 1; // or set a global flag
 		
 	}
@@ -66,7 +67,7 @@ void *routine(void *arg)
 		// philo_die(p);               // revisar justo al comenzar
 
 		philo_feeder(p);
-		philo_die(p);               // por si te mueres durante el sleep
+		// philo_die(p);               // por si te mueres durante el sleep
 
 		eepy_philo(p);
 		// philo_die(p);               // por si te mueres mientras duermes
