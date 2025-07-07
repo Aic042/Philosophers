@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/03 12:18:25 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:50:26 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_config
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				number_of_times_each_philosopher_must_eat;
-	int				last_meal_time;
 	t_fork			*r_fork;
 	t_fork			*l_fork;
 	pthread_t		main_thread;
@@ -57,6 +56,7 @@ typedef struct s_philo
 	int				to_eat;
 	int				to_sleep;
 	int				to_die;
+	long			last_meal_time;
 	int				times_ate;
 	int				unalived;
 	t_config		*config;
@@ -77,6 +77,7 @@ void	philo_think(t_philo *p);
 void	 *routine(void *arg);
 long	get_time_ms(void);
 void	initialize_variables(t_philo *p, char **argv);
+void	print_status(t_philo *p, char *msg);
 
 
 #endif

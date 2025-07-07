@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:49:03 by aingunza          #+#    #+#             */
-/*   Updated: 2025/06/28 12:14:51 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/06 22:42:21 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int	arg_checker(int argc, char **argv)
 	if (argc == 6)
 		if(!check_pos_int(ft_atoi(argv[5])))
 			return (0);
-	return (ft_printf("Args are all good\n"), 1);
+	return (1);
 }

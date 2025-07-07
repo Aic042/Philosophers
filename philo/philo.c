@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:59:01 by root              #+#    #+#             */
-/*   Updated: 2025/07/05 13:05:47 by root             ###   ########.fr       */
+/*   Updated: 2025/07/07 06:43:04 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@ int main(int argc, char **argv)
 	t_philo *philos = malloc(sizeof(t_philo) * n);
 	pthread_t *threads = malloc(sizeof(pthread_t) * n);
 	t_config *config = malloc(sizeof(t_config));
-	
+	pthread_mutex_init(&config->print, NULL); 	
 	config->start_time = get_time_ms();
+	config->time_to_die = ft_atoi(argv[2]);
 	config->time_to_eat = ft_atoi(argv[3]);
 	config->time_to_sleep = ft_atoi(argv[4]);
+	
 	while (i < n)
 	{
 		philos[i].id = i + 1;
 		philos[i].config = config;
+		philos[i].last_meal_time = config->start_time; // <-- AQUÍ
 		pthread_create(&threads[i], NULL, routine, &philos[i]);
 		i++;
 	}
