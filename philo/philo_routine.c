@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/07 10:17:52 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/07 11:38:46 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void philo_die(t_philo *p)
 	{
 		long timestamp = now - p->config->start_time;
 		printf("%ld | Philo %d died\n", timestamp, p->id);
-		exit(1); // or set a global flag
+		p->unalived = 1; // or set a global flag
+		
 	}
 }
 
@@ -59,6 +60,8 @@ void *routine(void *arg)
 	{
 		if (p->config->number_of_times_each_philosopher_must_eat > 0 &&
 			p->times_ate >= p->config->number_of_times_each_philosopher_must_eat)
+			break;
+		if (p->unalived == 1)
 			break;
 		philo_die(p);               // revisar justo al comenzar
 

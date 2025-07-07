@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:59:01 by root              #+#    #+#             */
-/*   Updated: 2025/07/07 09:35:57 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:00:56 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 	memset(philos, 0, sizeof(t_philo) * n);
 	t_config *config = malloc(sizeof(t_config));
 	if (!philos || !threads || !config)
-		ft_printf("Error, structs malloc", 1);
+		printf("Error, structs malloc");
 	initialize_var(argv, config);
 	for (i = 0; i < n; i++)
 	{

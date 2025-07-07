@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:49:03 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/06 22:42:21 by root             ###   ########.fr       */
+/*   Updated: 2025/07/07 14:00:20 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_pos_int(int num)
 {
 	if (num < 0)
-		return (ft_printf("num is negative\n"), 0);
+		return (printf("num is negative\n"), 0);
 	else
 		return (1);
 }
@@ -23,13 +23,13 @@ int	check_pos_int(int num)
 int	arg_checker(int argc, char **argv)
 {
 	if (argc != 5 && argc != 6)
-		return (ft_printf("Bad Argc\n"), 0);
+		return (printf("Bad Argc\n"), 0);
 	if (argv[1] == NULL || argv[2] == NULL
 		|| argv[3] == NULL || argv[4] == NULL)
-		return (ft_printf("Null\n"), 0);
+		return (printf("Null\n"), 0);
 	if (is_str_digit(argv[1]) == 0 || is_str_digit(argv[2]) == 0
 		|| is_str_digit(argv[3]) == 0 || is_str_digit(argv[4]) == 0)
-		return (ft_printf("No digit\n"), 0);
+		return (printf("No digit\n"), 0);
 	if (!check_pos_int(ft_atoi(argv[1])) || !check_pos_int(ft_atoi(argv[2]))
 		|| !check_pos_int(ft_atoi(argv[3])) || !check_pos_int(ft_atoi(argv[4])))
 		return (0);

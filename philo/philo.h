@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/07 10:14:43 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/07 10:51:57 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ long	get_time_ms(void);
 void	initialize_variables(t_philo *p, char **argv);
 void	print_status(t_philo *p, char *msg);
 void	initialize_var(char **argv, t_config *c);
+void	var_cleaner(t_config *c);
 
 
 #endif
