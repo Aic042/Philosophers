@@ -33,28 +33,30 @@ int	ft_isspace(int c)
 
 int	ft_atoi(const char *str)
 {
-	int	result;
-	int	sign;
-	int	i;
+	long	result;
+	int		i;
+	int		final;
 
+	if (!str)
+		return 0;
 	result = 0;
-	sign = 1;
 	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '+' && str[i + 1] != '-')
-		i++;
-	if (str[i] == '-')
+	final = 0;
+	if (str[0] == '+')
+		i = 1;
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
-		sign = -1;
-		i++;
-	}
-	while (str[i] && str[i] >= 48 && str[i] <= 57)
-	{
+		if (str[i] == '-')
+			return 0;
 		result *= 10;
 		result += str[i] - 48;
+		if (result > INT_MAX)
+			return (0);
 		i++;
+		printf ("result in atoi is: %ld\n", result);
 	}
-	result *= sign;
-	return (result);
+	final = result;
+	printf ("final result in atoi is: %d\n", final);
+
+	return (final);
 }

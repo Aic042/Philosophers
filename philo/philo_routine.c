@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:33:19 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/07 22:42:04 by root             ###   ########.fr       */
+/*   Updated: 2025/07/08 12:39:04 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	fork_taker(t_philo *p)
     else
     {
         pthread_mutex_lock(&p->config->forks[p->left_fork_id].fork);
-        print_status(p, "has taken a fork");
+        print_status(p, "has taken a R_fork");
         pthread_mutex_lock(&p->config->forks[p->right_fork_id].fork);
-        print_status(p, "has taken a fork");
+        print_status(p, "has taken a L_fork");
     }
 }
 

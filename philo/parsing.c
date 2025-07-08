@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:49:03 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/07 14:00:20 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/08 16:32:00 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	arg_checker(int argc, char **argv)
 	if (!check_pos_int(ft_atoi(argv[1])) || !check_pos_int(ft_atoi(argv[2]))
 		|| !check_pos_int(ft_atoi(argv[3])) || !check_pos_int(ft_atoi(argv[4])))
 		return (0);
-		
+	if (ft_atoi(argv[1]) == 0)
+		return(printf("No philosophers\n"), 0);
+	if (ft_atoi(argv[3]) == 0 || ft_atoi(argv[4]) == 0 || (ft_atoi(argv[5])) == 0)
+		return(printf("Num is bad\n"), 0);
 	if (argc == 6)
 		if(!check_pos_int(ft_atoi(argv[5])))
 			return (0);

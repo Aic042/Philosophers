@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/07 22:32:15 by root             ###   ########.fr       */
+/*   Updated: 2025/07/08 16:03:24 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <string.h>   // To use memset
 # include <sys/time.h> // To use gettimeofday
 # include <unistd.h>   // To use write, usleep
-# include "../libft/libft.h"
+# include <limits.h>
 
 # define IS_EATING "is eating"
 # define IS_SLEEPING "is sleeping"
@@ -51,8 +51,8 @@ typedef struct s_config
 typedef struct s_philo
 {
 	pthread_mutex_t	death;
-    int         	left_fork_id;
-    int         	right_fork_id;
+	int				left_fork_id;
+	int				right_fork_id;
 	int 			id;
 	int				is_Sleeping;
 	int				is_eating;
@@ -81,6 +81,7 @@ void	initialize_variables(t_philo *p, char **argv);
 void	print_status(t_philo *p, char *msg);
 void	initialize_var(char **argv, t_config *c);
 void	var_cleaner(t_config *c);
-
-
+int		ft_atoi(const char *str);
+int		is_str_digit(char *str);
+void	cleaner(t_config *c, t_philo *p, pthread_t  *threads);
 #endif

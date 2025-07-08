@@ -3,31 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:59:01 by root              #+#    #+#             */
-/*   Updated: 2025/07/07 23:55:46 by root             ###   ########.fr       */
+/*   Updated: 2025/07/08 15:21:40 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	fork_getter(char **argv)
+void	cleaner(t_config *c, t_philo *p, pthread_t  *threads)
 {
-	int	forks;
-
-	forks = ft_atoi(argv[1]);
-	return (forks);
+	if(c)
+		free(c);
+	if (p)
+		free(p);
+	if (threads)
+		free (threads);
 }
-// forks = forks + 1;
-// void variable_initializer()
-// {
-// 	struct timeval time;
-// 	int current;
-// 	gettimeofday(&time, NULL);
-// 	current = ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-// 	return (current);
-// }
 
 int main(int argc, char **argv)
 {
@@ -43,7 +36,7 @@ int main(int argc, char **argv)
 	t_config *config = malloc(sizeof(t_config));
 	config->forks = malloc(sizeof(t_fork) * config->philo_num);
 	for (int i = 0; i < config->philo_num; i++)
-    	pthread_mutex_init(&config->forks[i].fork, NULL);
+		pthread_mutex_init(&config->forks[i].fork, NULL);
 
 	if (!philos || !threads || !config)
 		printf("Error, structs malloc");
@@ -54,38 +47,15 @@ int main(int argc, char **argv)
 		philos[i].config = config;
 		philos[i].times_ate = 0;
 		philos[i].last_meal_time = config->start_time;
-    	pthread_create(&threads[i], NULL, routine, &philos[i]);
+		pthread_create(&threads[i], NULL, routine, &philos[i]);
 	}
 
 	for (i = 0; i < n; i++)
 		pthread_join(threads[i], NULL);
 	printf("times eaten: %d\n", philos->times_ate);
-	free(philos);
-	free(threads);
-	free(config);
+	// free(philos);
+	// free(threads);
+	// free(config);
+	cleaner(config, philos, threads);
 	return 0;
 }
-
-
-
-// int	main(int argc, char **argv)
-// {
-// 	int	forks;
-
-// 	if (!arg_checker(argc, argv))
-// 		exit(1);
-// 	forks = fork_getter(argv);
-// 	printf("forks = %d\n", forks);
-// 	pthread_t thread1;
-// 	pthread_create(&thread1, NULL, routine, NULL);	
-// 	return (write(1, "Done\n", 5), 0);
-// }
-	
-// int start = cur_time_getter();
-// while (1)
-// {
-// 	printf("time is: %d\n", cur_time_getter() - start);
-// 	usleep(12222); // 100ms
-// 	printf("now time is: %d\n", cur_time_getter() - start);
-// }
-//for later, should check if it's better to have an int
