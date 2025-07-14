@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/08 16:03:24 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/14 18:39:41 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ typedef struct s_config
 	t_fork			*forks;
 	pthread_t		main_thread;
 	long			start_time;
+	int				exit;
 	pthread_mutex_t	print;
 }	t_config;
 
 typedef struct s_philo
 {
-	pthread_mutex_t	death;
+	pthread_mutex_t	death_mutex;
 	int				left_fork_id;
 	int				right_fork_id;
 	int 			id;
@@ -84,4 +85,6 @@ void	var_cleaner(t_config *c);
 int		ft_atoi(const char *str);
 int		is_str_digit(char *str);
 void	cleaner(t_config *c, t_philo *p, pthread_t  *threads);
+int		die_checker(t_philo *p);
+void	*monitor(void *arg);
 #endif

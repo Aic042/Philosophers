@@ -9,7 +9,14 @@ void print_status(t_philo *p, char *msg)
 	pthread_mutex_unlock(&p->config->print);
 }
 
-// int is_dead(t_philo *p)
-// {
-	
-// }
+int die_checker(t_philo *p)
+{
+	int dead_philo;
+	pthread_mutex_lock(&p->death_mutex);
+	if(p->unalived)
+		dead_philo = 1;
+	else
+		dead_philo = 0;
+	pthread_mutex_unlock(&p->death_mutex);
+	return (dead_philo);
+}

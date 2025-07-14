@@ -53,10 +53,8 @@ int	ft_atoi(const char *str)
 		if (result > INT_MAX)
 			return (0);
 		i++;
-		printf ("result in atoi is: %ld\n", result);
 	}
 	final = result;
-	printf ("final result in atoi is: %d\n", final);
 
 	return (final);
 }
