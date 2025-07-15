@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/14 18:39:41 by root             ###   ########.fr       */
+/*   Updated: 2025/07/15 07:53:30 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ typedef struct s_config
 	int				time_to_sleep;
 	int				number_of_times_each_philosopher_must_eat;
 	t_fork			*forks;
-	pthread_t		main_thread;
 	long			start_time;
 	int				exit;
 	pthread_mutex_t	print;
+	pthread_mutex_t	meals;
+	pthread_mutex_t	take_forks;
 }	t_config;
 
 typedef struct s_philo

@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:59:01 by root              #+#    #+#             */
-/*   Updated: 2025/07/14 18:40:26 by root             ###   ########.fr       */
+/*   Updated: 2025/07/15 07:59:30 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ void init_structs(t_philo *philos, t_config *config)
     }
 }
 
+void fork_assigner(t_philo *p)
+{
+	p->left_fork_id = p->id - 1;
+	if (p->id == p->config->philo_num)
+		p->right_fork_id = 0;
+	else
+		p->right_fork_id = p->id;
+}
 
 int main(int argc, char **argv)
 {
