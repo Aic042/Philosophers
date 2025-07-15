@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:49:03 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/09 10:02:16 by root             ###   ########.fr       */
+/*   Updated: 2025/07/15 11:45:01 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	arg_checker(int argc, char **argv)
 		|| !check_pos_int(ft_atoi(argv[3])) || !check_pos_int(ft_atoi(argv[4])))
 		return (0);
 	if (ft_atoi(argv[1]) == 0)
-		return(printf("No philosophers\n"), 0);
+		return (printf("No philosophers\n"), 0);
 	if (ft_atoi(argv[3]) == 0 || ft_atoi(argv[4]) == 0)
-		return(printf("Num is bad\n"), 0);
+		return (printf("Num is bad\n"), 0);
 	if (argc == 6)
-		if(!check_pos_int(ft_atoi(argv[5])))
+		if (!check_pos_int(ft_atoi(argv[5])))
 			return (0);
 	return (1);
 }

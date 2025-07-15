@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/15 07:53:30 by root             ###   ########.fr       */
+/*   Updated: 2025/07/15 12:30:50 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@
 # define IS_FORK "has taken a fork"
 # define IS_DEAD "died"
 
-
 typedef struct s_fork
 {
-	long 			id;
+	long			id;
 	pthread_mutex_t	fork;
-	// t_philo 		*phil;
-} t_fork;
+}	t_fork;
 
 typedef struct s_config
 {
@@ -55,8 +53,8 @@ typedef struct s_philo
 	pthread_mutex_t	death_mutex;
 	int				left_fork_id;
 	int				right_fork_id;
-	int 			id;
-	int				is_Sleeping;
+	int				id;
+	int				is_sleeping;
 	int				is_eating;
 	int				is_thinking;
 	long			last_meal_time;
@@ -64,11 +62,8 @@ typedef struct s_philo
 	int				unalived;
 	t_config		*config;
 	t_fork			*fork;
-} t_philo;
+}	t_philo;
 
-// typedef struct s_misc
-// {
-// } t_misc;
 ////////////////// PARSING //////////////////////
 int		arg_checker(int argc, char **argv);
 
@@ -77,7 +72,7 @@ void	initialize_threads(char **argv);
 void	eepy_philo(t_philo *p);
 void	philo_feeder(t_philo *p);
 void	philo_think(t_philo *p);
-void	 *routine(void *arg);
+void	*routine(void *arg);
 long	get_time_ms(void);
 void	initialize_variables(t_philo *p, char **argv);
 void	print_status(t_philo *p, char *msg);
@@ -85,7 +80,8 @@ void	initialize_var(char **argv, t_config *c);
 void	var_cleaner(t_config *c);
 int		ft_atoi(const char *str);
 int		is_str_digit(char *str);
-void	cleaner(t_config *c, t_philo *p, pthread_t  *threads);
+void	cleaner(t_config *c, t_philo *p, pthread_t *threads);
 int		die_checker(t_philo *p);
 void	*monitor(void *arg);
+void	philo_die(t_philo *p);
 #endif

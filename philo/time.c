@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 10:57:10 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/15 07:59:48 by root             ###   ########.fr       */
+/*   Updated: 2025/07/15 12:16:59 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long get_time_ms(void)
+long	get_time_ms(void)
 {
 	struct timeval	tv;
 
