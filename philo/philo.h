@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/15 12:30:50 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/16 08:28:59 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ typedef struct s_config
 	t_fork			*forks;
 	long			start_time;
 	int				exit;
+	int				satisfied_philos; // cuántos han comido lo suficiente
 	pthread_mutex_t	print;
 	pthread_mutex_t	meals;
 	pthread_mutex_t	take_forks;
+	pthread_mutex_t exit_mutex;
 }	t_config;
 
 typedef struct s_philo
@@ -61,7 +63,8 @@ typedef struct s_philo
 	int				times_ate;
 	int				unalived;
 	t_config		*config;
-	t_fork			*fork;
+	t_fork			*fork_r;
+	t_fork			*fork_l;
 }	t_philo;
 
 ////////////////// PARSING //////////////////////
@@ -73,7 +76,9 @@ void	eepy_philo(t_philo *p);
 void	philo_feeder(t_philo *p);
 void	philo_think(t_philo *p);
 void	*routine(void *arg);
+void	sleep_function(t_philo *p, int time);
 long	get_time_ms(void);
+int		check_one_philo(t_philo *p);
 void	initialize_variables(t_philo *p, char **argv);
 void	print_status(t_philo *p, char *msg);
 void	initialize_var(char **argv, t_config *c);
@@ -82,6 +87,10 @@ int		ft_atoi(const char *str);
 int		is_str_digit(char *str);
 void	cleaner(t_config *c, t_philo *p, pthread_t *threads);
 int		die_checker(t_philo *p);
+int		get_exit(t_config *c);
+void	set_exit(t_config *c, int value);
 void	*monitor(void *arg);
 void	philo_die(t_philo *p);
+void	init_sleep(t_philo *p);
+
 #endif
