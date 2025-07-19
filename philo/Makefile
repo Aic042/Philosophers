@@ -6,16 +6,14 @@
 #    By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 21:01:27 by root              #+#    #+#              #
-#    Updated: 2025/07/07 13:56:52 by aingunza         ###   ########.fr        #
+#    Updated: 2025/07/19 14:14:54 by aingunza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = philo
 
-# LIBFT = ../libft
 CFLAGS = -Wextra -Wall -Werror
 HEADERS := -I ./include
-# LIBS = -L$(LIBFT) -lft
 SRCS := $(shell find . -maxdepth 1 -iname "*.c")
 OBJS := $(SRCS:.c=.o)
 
@@ -25,8 +23,7 @@ BLUE   := \033[1;34m
 RED    := \033[1;31m
 RESET  := \033[0m
 
-# all: banner loading libft $(NAME) fun_msg
-all: banner loading libft $(NAME) fun_msg
+all: banner loading  $(NAME) fun_msg
 
 banner:
 	@echo "$(BLUE)"
@@ -39,9 +36,7 @@ banner:
 	@echo "$(RESET)"
 
 
-# libft:
-# 	@echo "$(YELLOW)🔧 Building libft...$(RESET)"
-# 	@make -C $(LIBFT)
+
 loading:
 	@echo -n "Building"; for i in {1..3}; do sleep 0.3; echo -n "."; done; echo " 🚀"
 
@@ -50,7 +45,7 @@ fun_msg:
 
 $(NAME): $(OBJS)
 	@echo "$(GREEN)🔗 Linking $(NAME)...$(RESET)"
-	cc $(OBJS) -o $(NAME) $(LIBS)
+	cc $(OBJS) -o $(NAME) 
 
 clean:
 	@echo "$(YELLOW)🧹 Cleaning object files...$(RESET)"
@@ -60,4 +55,4 @@ fclean: clean
 	@rm -rf $(NAME)	
 re: fclean all
 
-.PHONY: all bonus clean fclean re libft
+.PHONY: all clean fclean re banner loading fun_msg

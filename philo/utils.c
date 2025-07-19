@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 11:40:27 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/15 11:41:00 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/19 14:34:30 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,36 +36,49 @@ int	is_str_digit(char *str)
 	return (1);
 }
 
-int	ft_isspace(int c)
+// int	ft_isspace(int c)
+// {
+// 	if (c == 9 || c == 10 || c == 11 || c == 12 || c == 13 || c == 32)
+// 		return (1);
+// 	return (0);
+// }
+
+long	ft_atol(const char *s)
 {
-	if (c == 9 || c == 10 || c == 11 || c == 12 || c == 13 || c == 32)
-		return (1);
-	return (0);
+	size_t	i;
+	long	res;
+	int		sign;
+
+	i = 0;
+	res = 0;
+	sign = 1;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == 32)
+		i++;
+	if (s[i] == '-')
+		sign = -1;
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		if (res > INT_MAX / 10
+			|| (res == INT_MAX / 10 && (s[i] - '0') > INT_MAX % 10))
+			return (0);
+		res = res * 10 + (s[i++] - '0');
+	}
+	return (sign * res);
 }
 
-int	ft_atoi(const char *str)
+void	print_status(t_philo *p, char *msg)
 {
-	long	result;
-	int		i;
-	int		final;
+	long	timestamp;
 
-	if (!str)
-		return (0);
-	result = 0;
-	i = 0;
-	final = 0;
-	if (str[0] == '+')
-		i = 1;
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	pthread_mutex_lock(&p->config->print);
+	if (get_exit(p->config))
 	{
-		if (str[i] == '-')
-			return (0);
-		result *= 10;
-		result += str[i] - 48;
-		if (result > INT_MAX)
-			return (0);
-		i++;
+		pthread_mutex_unlock(&p->config->print);
+		return ;
 	}
-	final = result;
-	return (final);
+	timestamp = get_time_ms() - p->config->start_time;
+	printf("%ld %d %s\n", timestamp, p->id, msg);
+	pthread_mutex_unlock(&p->config->print);
 }

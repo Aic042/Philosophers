@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:49:03 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/15 11:45:01 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/19 14:25:13 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ int	arg_checker(int argc, char **argv)
 	if (is_str_digit(argv[1]) == 0 || is_str_digit(argv[2]) == 0
 		|| is_str_digit(argv[3]) == 0 || is_str_digit(argv[4]) == 0)
 		return (printf("No digit\n"), 0);
-	if (!check_pos_int(ft_atoi(argv[1])) || !check_pos_int(ft_atoi(argv[2]))
-		|| !check_pos_int(ft_atoi(argv[3])) || !check_pos_int(ft_atoi(argv[4])))
+	if (!check_pos_int(ft_atol(argv[1])) || !check_pos_int(ft_atol(argv[2]))
+		|| !check_pos_int(ft_atol(argv[3])) || !check_pos_int(ft_atol(argv[4])))
 		return (0);
-	if (ft_atoi(argv[1]) == 0)
+	if (ft_atol(argv[1]) == 0)
 		return (printf("No philosophers\n"), 0);
-	if (ft_atoi(argv[3]) == 0 || ft_atoi(argv[4]) == 0)
+	if (ft_atol(argv[3]) == 0 || ft_atol(argv[4]) == 0)
 		return (printf("Num is bad\n"), 0);
 	if (argc == 6)
-		if (!check_pos_int(ft_atoi(argv[5])))
+		if (!check_pos_int(ft_atol(argv[5])))
 			return (0);
 	return (1);
 }
