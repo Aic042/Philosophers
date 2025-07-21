@@ -1,9 +1,0 @@
-1  1 has taken a fork
-1  1 has taken a fork
-1  1 is eating
-1  2 has taken a fork
-101  1 is sleeping
-101  2 has taken a fork
-101  2 is eating
-202  1 is thinking
-203  2 is sleeping

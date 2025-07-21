@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 09:44:54 by root              #+#    #+#             */
-/*   Updated: 2025/07/19 14:22:53 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/21 20:51:38 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	main(int argc, char **argv)
 	t_config	*config;
 	t_philo		*p;
 
+	if (argc != 5 && argc != 6)
+		return (printf("Bad Argc\n"), 0);
 	config = malloc(sizeof(t_config));
 	if (!config)
 		return (1);
