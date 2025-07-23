@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meal.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:25:32 by root              #+#    #+#             */
-/*   Updated: 2025/07/19 14:23:22 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/23 08:09:49 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	*routine(void *arg)
 		return (NULL);
 	init_sleep(p);
 	joint_actions(p);
+	printf("Philo %d has finished eating %d times.\n", p->id, p->times_ate);
 	return (NULL);
 }
 
