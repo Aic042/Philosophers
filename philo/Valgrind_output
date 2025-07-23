@@ -982,3 +982,6 @@
 ==1235336== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 21744 from 116)
 
  % valgrind --tool=helgrind ./philo 5 800 200 200 -> Valgrind_output
+
+ Also, chequea negativos philos
+ 
