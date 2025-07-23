@@ -6,13 +6,13 @@
 #    By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 21:01:27 by root              #+#    #+#              #
-#    Updated: 2025/07/19 14:14:54 by aingunza         ###   ########.fr        #
+#    Updated: 2025/07/23 17:23:55 by aingunza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = philo
 
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS = -Wextra -Wall -Werror -g
 HEADERS := -I ./include
 SRCS := $(shell find . -maxdepth 1 -iname "*.c")
 OBJS := $(SRCS:.c=.o)
