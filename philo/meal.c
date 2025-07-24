@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:25:32 by root              #+#    #+#             */
-/*   Updated: 2025/07/23 12:40:01 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/24 15:10:12 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	*routine(void *arg)
 		return (NULL);
 	init_sleep(p);
 	joint_actions(p);
-	printf("Philo %d has finished eating %d times.\n", p->id, p->times_ate);
 	return (NULL);
 }
+	// printf("Philo %d has finished eating %d times.\n", p->id, p->times_ate);
 
 void	meal(t_philo *p)
 {

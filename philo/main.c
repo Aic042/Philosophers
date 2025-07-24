@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 09:44:54 by root              #+#    #+#             */
-/*   Updated: 2025/07/21 20:51:38 by root             ###   ########.fr       */
+/*   Updated: 2025/07/24 15:14:50 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	init_structs(t_philo *philos, t_config *config)
 	config->forks = (t_fork *)malloc(sizeof(t_fork) * config->philo_num);
 	if (!config->forks)
 		return ;
-	i = 0;
-	while (i < config->philo_num)
+	config->exit = 0;
+	i = -1;
+	while (++i < config->philo_num)
 	{
 		config->forks[i].id = i;
 		pthread_mutex_init(&config->forks[i].fork, NULL);
-		i++;
 	}
 	i = -1;
 	while (++i < config->philo_num)
@@ -87,7 +87,9 @@ int	main(int argc, char **argv)
 	t_philo		*p;
 
 	if (argc != 5 && argc != 6)
-		return (printf("Bad Argc\n"), 0);
+		return (printf("Bad Argc\n"), 1);
+	if (ft_atol(argv[1]) <= 0)
+		return (printf("No philosophers\n"), 1);
 	config = malloc(sizeof(t_config));
 	if (!config)
 		return (1);
