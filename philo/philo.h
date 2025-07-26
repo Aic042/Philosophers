@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/19 14:18:59 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/26 13:41:24 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	assign_forks(t_philo *philo, t_fork *forks, int pos);
 /////////////// PHILOSOPHER ROUTINE /////////////
 void	*routine(void *arg);
 void	meal(t_philo *p);
+void	*monitor_routine(void *arg);
 
 /////////////// ACTIONS /////////////////////////
 void	print_status(t_philo *p, char *msg);

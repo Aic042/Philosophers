@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meal.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:25:32 by root              #+#    #+#             */
-/*   Updated: 2025/07/24 15:10:12 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/26 13:50:57 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sleep_function(t_philo *p, int time)
 			philo_die(p);
 			return ;
 		}
-		usleep(150);
+		usleep(50);
 	}
 }
 
@@ -77,8 +77,14 @@ void	*routine(void *arg)
 
 void	meal(t_philo *p)
 {
-	int	i;
+	int			i;
+	pthread_t	monitor_thread;
 
+	if (pthread_create(&monitor_thread, NULL, &monitor_routine, p) != 0)
+	{
+		printf("Error creating monitor thread\n");
+		return ;
+	}
 	i = 0;
 	while (i < p->config->philo_num)
 	{
@@ -93,4 +99,5 @@ void	meal(t_philo *p)
 		pthread_join(p[i].threads, NULL);
 		i++;
 	}
+	pthread_join(monitor_thread, NULL);
 }

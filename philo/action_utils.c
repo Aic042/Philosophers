@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:56:42 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/19 13:57:09 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/26 13:52:19 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,33 @@ void	philo_eat_helper(t_philo *p)
 	pthread_mutex_unlock(&p->fork_r->fork);
 	pthread_mutex_unlock(&p->fork_l->fork);
 	pthread_mutex_lock(&p->config->meals);
+}
+
+void	*monitor_routine(void *arg)
+{
+	t_philo	*p;
+	int		i;
+
+	p = (t_philo *)arg;
+	while (!get_exit(p->config))
+	{
+		i = 0;
+		while (i < p->config->philo_num)
+		{
+			if (time_over(&p[i]))
+			{
+				philo_die(&p[i]);
+				return (NULL);
+			}
+			if (p->config->num_of_times_each_philo_must_eat > 0
+				&& all_philos_ate_enough(p))
+			{
+				set_exit(p->config, 1);
+				return (NULL);
+			}
+			i++;
+		}
+		usleep(10);
+	}
+	return (NULL);
 }
