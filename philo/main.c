@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 09:44:54 by root              #+#    #+#             */
-/*   Updated: 2025/07/24 15:14:50 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:18:16 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_structs(t_philo *philos, t_config *config)
 		philos[i].config = config;
 		philos[i].times_ate = 0;
 		philos[i].is_thinking = 1;
+		pthread_mutex_init(&config->last_meal_mutex, NULL);
 	}
 }
 
@@ -81,6 +82,24 @@ void	init_variables(int argc, char **argv, t_philo *p, t_config *config)
 		config->num_of_times_each_philo_must_eat = -1;
 }
 
+
+void	cleaner(t_philo *p, t_config *config)
+{
+	int	i;
+
+	i = 0;
+	while (i < config->philo_num)
+		pthread_mutex_destroy(&config->forks[i++].fork);
+	pthread_mutex_destroy(&config->death_mutex);
+	pthread_mutex_destroy(&config->print);
+	pthread_mutex_destroy(&config->meals);
+	pthread_mutex_destroy(&config->take_forks);
+	pthread_mutex_destroy(&config->exit_mutex);
+	free(config->forks);
+	free(config);
+	free(p);
+}
+
 int	main(int argc, char **argv)
 {
 	t_config	*config;
@@ -108,21 +127,4 @@ int	main(int argc, char **argv)
 	meal(p);
 	cleaner(p, config);
 	return (0);
-}
-
-void	cleaner(t_philo *p, t_config *config)
-{
-	int	i;
-
-	i = 0;
-	while (i < config->philo_num)
-		pthread_mutex_destroy(&config->forks[i++].fork);
-	pthread_mutex_destroy(&config->death_mutex);
-	pthread_mutex_destroy(&config->print);
-	pthread_mutex_destroy(&config->meals);
-	pthread_mutex_destroy(&config->take_forks);
-	pthread_mutex_destroy(&config->exit_mutex);
-	free(config->forks);
-	free(config);
-	free(p);
 }

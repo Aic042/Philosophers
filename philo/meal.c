@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   meal.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 22:25:32 by root              #+#    #+#             */
-/*   Updated: 2025/07/26 13:50:57 by root             ###   ########.fr       */
+/*   Updated: 2025/07/28 16:32:05 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,11 @@ void	meal(t_philo *p)
 	i = 0;
 	while (i < p->config->philo_num)
 	{
+		pthread_mutex_lock(&p->config->death_mutex);
 		p[i].last_meal_time = p->config->start_time;
+		pthread_mutex_unlock(&p->config->death_mutex);
 		pthread_create(&p[i].threads, NULL, &routine, &p[i]);
-		usleep(1);
+		// usleep(1);
 		i++;
 	}
 	i = 0;

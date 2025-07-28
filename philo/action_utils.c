@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:56:42 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/26 13:52:19 by root             ###   ########.fr       */
+/*   Updated: 2025/07/28 16:34:28 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	three_philos(t_philo *p)
 
 void	philo_eat_helper(t_philo *p)
 {
-	pthread_mutex_lock(&p->config->death_mutex);
+	pthread_mutex_lock(&p->config->last_meal_mutex);
 	p->last_meal_time = get_time_ms();
-	pthread_mutex_unlock(&p->config->death_mutex);
+	pthread_mutex_unlock(&p->config->last_meal_mutex);
 	sleep_function(p, p->config->time_to_eat);
 	pthread_mutex_unlock(&p->fork_r->fork);
 	pthread_mutex_unlock(&p->fork_l->fork);

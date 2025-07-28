@@ -6,13 +6,13 @@
 #    By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 21:01:27 by root              #+#    #+#              #
-#    Updated: 2025/07/24 14:52:32 by aingunza         ###   ########.fr        #
+#    Updated: 2025/07/28 15:11:12 by aingunza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = philo
 
-CFLAGS = -Wextra -Wall -Werror -g
+CFLAGS = -Wextra -Wall -Werror -g -fsanitize=thread
 HEADERS := -I ./include
 SRCS := $(shell find . -maxdepth 1 -iname "*.c")
 OBJS := $(SRCS:.c=.o)
@@ -45,7 +45,7 @@ all: banner loading  $(NAME) fun_msg
 
 $(NAME): $(OBJS)
 	@echo "$(GREEN)🔗 Linking $(NAME)...$(RESET)"
-	cc $(OBJS) -o $(NAME) 
+	cc $(OBJS) $(CFLAGS) -o $(NAME) 
 
 clean:
 	@echo "$(YELLOW)🧹 Cleaning object files...$(RESET)"

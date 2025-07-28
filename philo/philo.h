@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/26 13:41:24 by root             ###   ########.fr       */
+/*   Updated: 2025/07/28 16:15:09 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_config
 	pthread_mutex_t	meals;
 	pthread_mutex_t	take_forks;
 	pthread_mutex_t	exit_mutex;
+	pthread_mutex_t last_meal_mutex;
 	int				exit;
 	pthread_mutex_t	death_mutex;
 }	t_config;
