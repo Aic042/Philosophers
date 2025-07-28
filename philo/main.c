@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 09:44:54 by root              #+#    #+#             */
-/*   Updated: 2025/07/28 16:18:16 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:44:40 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	init_structs(t_philo *philos, t_config *config)
 {
 	int	i;
 
-	pthread_mutex_init(&config->print, NULL);
-	pthread_mutex_init(&config->meals, NULL);
-	pthread_mutex_init(&config->take_forks, NULL);
-	pthread_mutex_init(&config->exit_mutex, NULL);
-	pthread_mutex_init(&config->death_mutex, NULL);
+	mutex_initializer(config);
 	config->forks = (t_fork *)malloc(sizeof(t_fork) * config->philo_num);
 	if (!config->forks)
 		return ;
@@ -76,12 +72,8 @@ void	init_variables(int argc, char **argv, t_philo *p, t_config *config)
 	config->time_to_die = ft_atol(argv[2]);
 	config->time_to_eat = ft_atol(argv[3]);
 	config->time_to_sleep = ft_atol(argv[4]);
-	if (argc == 6)
-		config->num_of_times_each_philo_must_eat = ft_atol(argv[5]);
-	else
-		config->num_of_times_each_philo_must_eat = -1;
+	check_times_philo_eats(argc, argv, config);
 }
-
 
 void	cleaner(t_philo *p, t_config *config)
 {
@@ -107,8 +99,6 @@ int	main(int argc, char **argv)
 
 	if (argc != 5 && argc != 6)
 		return (printf("Bad Argc\n"), 1);
-	if (ft_atol(argv[1]) <= 0)
-		return (printf("No philosophers\n"), 1);
 	config = malloc(sizeof(t_config));
 	if (!config)
 		return (1);
@@ -118,6 +108,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (arg_checker(argc, argv) == 0)
 	{
+		free(config);
 		free(p);
 		return (1);
 	}

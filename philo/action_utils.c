@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 13:56:42 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/28 16:34:28 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:45:38 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,13 @@ void	*monitor_routine(void *arg)
 		usleep(10);
 	}
 	return (NULL);
+}
+
+void	mutex_initializer(t_config *config)
+{
+	pthread_mutex_init(&config->print, NULL);
+	pthread_mutex_init(&config->meals, NULL);
+	pthread_mutex_init(&config->take_forks, NULL);
+	pthread_mutex_init(&config->exit_mutex, NULL);
+	pthread_mutex_init(&config->death_mutex, NULL);
 }

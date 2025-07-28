@@ -6,15 +6,23 @@
 #    By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/14 21:01:27 by root              #+#    #+#              #
-#    Updated: 2025/07/28 15:11:12 by aingunza         ###   ########.fr        #
+#    Updated: 2025/07/28 17:06:07 by aingunza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = philo
 
-CFLAGS = -Wextra -Wall -Werror -g -fsanitize=thread
+CFLAGS = -Wextra -Wall -Werror -g 
 HEADERS := -I ./include
-SRCS := $(shell find . -maxdepth 1 -iname "*.c")
+SRCS := actions.c \
+		action_utils.c \
+		main.c \
+		parsing.c \
+		utils.c \
+		exitdeath.c \
+		meal.c \
+		time_stuff.c \
+
 OBJS := $(SRCS:.c=.o)
 
 GREEN  := \033[1;32m

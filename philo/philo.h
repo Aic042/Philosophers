@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 19:09:39 by root              #+#    #+#             */
-/*   Updated: 2025/07/28 16:15:09 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:44:26 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_config
 	pthread_mutex_t	meals;
 	pthread_mutex_t	take_forks;
 	pthread_mutex_t	exit_mutex;
-	pthread_mutex_t last_meal_mutex;
+	pthread_mutex_t	last_meal_mutex;
 	int				exit;
 	pthread_mutex_t	death_mutex;
 }	t_config;
@@ -70,6 +70,7 @@ typedef struct s_philo
 
 ////////////////// PARSING //////////////////////
 int		arg_checker(int argc, char **argv);
+int		check_times_philo_eats(int argc, char **argv, t_config *config);
 
 /////////////// UTILS ///////////////////////////
 long	ft_atol(const char *str);
@@ -87,6 +88,7 @@ int		check_one_philo(t_philo *p);
 void	init_structs(t_philo *philos, t_config *config);
 void	init_variables(int argc, char **argv, t_philo *p, t_config *config);
 void	assign_forks(t_philo *philo, t_fork *forks, int pos);
+void	mutex_initializer(t_config *config);
 
 /////////////// PHILOSOPHER ROUTINE /////////////
 void	*routine(void *arg);

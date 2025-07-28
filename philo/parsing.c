@@ -6,7 +6,7 @@
 /*   By: aingunza <aingunza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 12:49:03 by aingunza          #+#    #+#             */
-/*   Updated: 2025/07/24 14:50:43 by aingunza         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:45:34 by aingunza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,21 @@ int	check_pos_int(int num)
 		return (1);
 }
 
+int	check_times_philo_eats(int argc, char **argv, t_config *config)
+{
+	if (argc == 6)
+		config->num_of_times_each_philo_must_eat = ft_atol(argv[5]);
+	else
+		config->num_of_times_each_philo_must_eat = -1;
+	if (config->num_of_times_each_philo_must_eat == 0)
+		set_exit (config, 1);
+	return (1);
+}
+
 int	arg_checker(int argc, char **argv)
 {
+	if (ft_atol(argv[1]) <= 0)
+		return (printf("No philosophers\n"), 0);
 	if (argc != 5 && argc != 6)
 		return (printf("Bad Argc\n"), 0);
 	if (argv[1] == NULL || argv[2] == NULL
